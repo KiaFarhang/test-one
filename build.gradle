@@ -6,6 +6,12 @@ plugins {
 
 mainClassName = 'com.kiafarhang.onetest.App'
 
+run {
+    if (project.hasProperty("fileArgs")) {
+        args Eval.me(fileArgs)
+    }
+}
+
 dependencies {
     compile 'com.google.guava:guava:23.0'
 
