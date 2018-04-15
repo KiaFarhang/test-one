@@ -6,6 +6,9 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
 
 public class WordCountTest {
     @Test
@@ -113,5 +116,33 @@ public class WordCountTest {
 
         assertTrue(wordCount.containsKey("world"));
         assertEquals(1, wordCount.get("world"), 0);
+    }
+
+    @Test
+    public void sortsMapsByIntValue() {
+        Map<String, Integer> map = new HashMap<String, Integer>();
+        map.put("Zebra", 20);
+        map.put("Elephant", 5);
+        map.put("Apple", 1);
+        map.put("Stingray", 45);
+
+        Map<String, Integer> sortedMap = WordCount.sortMapByIntegerValueHighestFirst(map);
+
+        // We need to prove that the map is sorted. Since this method is supposed to return a map with guaranteed
+        // highest-to-smallest-value insertion order, we can iterate over the resulting map, add items to a list
+        // and make sure they were added in the order we expect.
+
+        List<String> results = new ArrayList<String>();
+
+        for (Map.Entry<String, Integer> entry : sortedMap.entrySet()) {
+            results.add(entry.getKey());
+        }
+
+        assertEquals(4, results.size(), 0);
+        assertEquals("Stingray", results.get(0));
+        assertEquals("Zebra", results.get(1));
+        assertEquals("Elephant", results.get(2));
+        assertEquals("Apple", results.get(3));
+
     }
 }
