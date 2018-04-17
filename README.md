@@ -149,4 +149,6 @@ For a bit more detail on my decision-making throughout the project, you can chec
 
 - Are there data structures other than Maps that we could use to solve this problem? If so, which ones and what would that implementation look like?
 - Are there better ways to achieve the most-frequent-words-first sorting necessary for this problem?
-- I stuck mainly to public, static methods as I find those easier to reason about and test (data in, data out). Is this common in an object-oriented language like Java? What are the drawbacks to this approach? 
+- How could we guarantee the histogram order of words with the same number of occurrences?
+- I stuck mainly to public, static methods as I find those easier to reason about and test (data in, data out). Is this common in an object-oriented language like Java? What are the drawbacks to this approach?
+- In the Histogram class's method to create a String line noted above, I create a new StringBuilder with every method call. Probbaly a better way to do that would be to create one StringBuilder instance for the class, correct? What's the relative performance hit of creating a new one with every method call?
